@@ -1,9 +1,11 @@
 #btnStartTest{
-    width: 100%;
+    position: absolute;
+    top: 50%;
+
+    width: 200px;
+    height: 50px;
 }
 
-.center{
-    margin: auto;
-    width: 20%;
-    height: 10%;
+#wrapper{
+    text-align: center;
 }
