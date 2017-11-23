@@ -3,11 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { TestStartComponent }   from './test-start/test-start.component';
 import { AskNameComponent }   from './ask-name/ask-name.component';
+import { MmsetestsComponent }   from './mmsetests/mmsetests.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/test-start', pathMatch: 'full' },
-  { path: 'test-start', component: TestStartComponent },
+  { path: '', redirectTo: '/mmsetests', pathMatch: 'full' },
+  { path: 'test-start/:id', component: TestStartComponent },
   { path: 'ask-name', component: AskNameComponent },
+  { path: 'mmsetests', component: MmsetestsComponent },
 ];
 
 @NgModule({

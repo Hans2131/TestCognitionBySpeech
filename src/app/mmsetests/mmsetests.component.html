@@ -1,0 +1,26 @@
+<h2>MMSE Testen</h2>
+<div class="panel-body">
+  <table class="table table-striped table-bordered table-list">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Patient id</th>
+        <th>Patient naam</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let mmsetest of mmsetests">
+        <td>{{mmsetest.id}}</td>
+        <td>{{mmsetest.subjectId}}</td>
+        <td>{{mmsetest.subjectName}}</td>
+        <td>{{mmsetest.status}}</td>
+        <td>
+          <a class="btn btn-default" routerLink="/test-start/{{mmsetest.id}}">Start test</a>
+          <a class="btn btn-default" routerLink="/show-test/{{mmsetest.id}}">Resultaten</a>           
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
