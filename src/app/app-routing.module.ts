@@ -9,6 +9,7 @@ import { QuestionlistComponent } from "./questionlist/questionlist.component";
 import { ReadExcerciseComponent } from "./read-excercise/read-excercise.component";
 import { MultipleTestsComponent } from "./multiple-tests/multiple-tests.component";
 import { DeductionComponent } from "./deduction/deduction.component";
+import { AskGeneralQuestionComponent } from "./ask-general-question/ask-general-question.component";
 
 const routes: Routes = [
   { path: '', redirectTo: '/mmsetests', pathMatch: 'full' },
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'read-excercise', component: ReadExcerciseComponent },
   { path: 'multiple-tests', component: MultipleTestsComponent },
   { path: 'deduction', component: DeductionComponent },
+  { path: 'ask-general-question', component: AskGeneralQuestionComponent },
 ];
 
 @NgModule({

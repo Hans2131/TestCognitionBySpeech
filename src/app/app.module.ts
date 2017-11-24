@@ -13,6 +13,8 @@ import { QuestionlistComponent } from './questionlist/questionlist.component';
 import { ReadExcerciseComponent } from './read-excercise/read-excercise.component';
 import { MultipleTestsComponent } from './multiple-tests/multiple-tests.component';
 import { DeductionComponent } from './deduction/deduction.component';
+import { CheckAnswerService } from './check-answer.service';
+import { AskGeneralQuestionComponent } from './ask-general-question/ask-general-question.component';
 
 @NgModule({
   declarations: [
@@ -25,12 +27,13 @@ import { DeductionComponent } from './deduction/deduction.component';
     ReadExcerciseComponent,
     MultipleTestsComponent,
     DeductionComponent
+    AskGeneralQuestionComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [MmsetestService],
+  providers: [MmsetestService, CheckAnswerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

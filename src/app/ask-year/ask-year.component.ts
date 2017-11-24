@@ -11,7 +11,6 @@ import { MmsetestService } from "../mmsetest.service";
   styleUrls: ['./ask-year.component.css']
 })
 export class AskYearComponent implements OnInit {
-
   currentAnswer: string;
   
   constructor(private activatedRoute: ActivatedRoute, private mmseService: MmsetestService) { }
