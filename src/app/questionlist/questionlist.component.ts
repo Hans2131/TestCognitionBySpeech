@@ -30,14 +30,14 @@ export class QuestionlistComponent implements OnInit {
         currentQuestion = question;
       }
     }
+    var tId = +this.activatedroute.snapshot.paramMap.get('id');
     if (currentQuestion.isGeneral) {
-      var tId = +this.activatedroute.snapshot.paramMap.get('id');
       this.router.navigate(["ask-general-question", { tId: tId, qId: currentQuestion.id }]);
     } else {
       if (currentQuestion.id == 11) {
-          this.router.navigate(["deduction", { tId: tId, qId: currentQuestion.id }]);
+        this.router.navigate(["deduction", { tId: tId, qId: currentQuestion.id }]);
       } else if (currentQuestion.id == 13) {
-        
+
       }
     }
   }
