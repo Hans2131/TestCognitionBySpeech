@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { QUESTIONS } from "../QuestionsMock";
 import { Question } from "../Question";
@@ -17,8 +17,9 @@ export class AskGeneralQuestionComponent implements OnInit {
 
   currentAnswer: string = "unknown";
   currentQuestion: Question;
-  
-  constructor(private activatedRoute: ActivatedRoute, private mmseService: MmsetestService, private checkAnswerService: CheckAnswerService) { }
+  score : number;
+
+  constructor(private activatedRoute: ActivatedRoute, private router: Router, private mmseService: MmsetestService, private checkAnswerService: CheckAnswerService) { }
 
   ngOnInit() {
     var questionId = +this.activatedRoute.snapshot.paramMap.get('qId');
@@ -31,7 +32,7 @@ export class AskGeneralQuestionComponent implements OnInit {
     var context = this;
     var msg = new SpeechSynthesisUtterance(this.currentQuestion.description);
     msg.lang = 'nl-NL';
-    msg.rate = 0.8;    
+    msg.rate = 0.8;
     window.speechSynthesis.speak(msg);
     msg.onend = function (e) {
       context.startDictation();
@@ -39,8 +40,8 @@ export class AskGeneralQuestionComponent implements OnInit {
   }
 
   startDictation(): void {
-
-    const {webkitSpeechRecognition} = (window as any)
+    var context = this;
+    const { webkitSpeechRecognition } = (window as any)
     if (window.hasOwnProperty('webkitSpeechRecognition')) {
 
       var recognition = new webkitSpeechRecognition();
@@ -52,15 +53,16 @@ export class AskGeneralQuestionComponent implements OnInit {
 
       recognition.onresult = function (e) {
         recognition.stop();
-        document.getElementById('answer').textContent = e.results[0][0].transcript;
-        this.currentAnswer = e.results[0][0].transcript
-
-        var id = +this.activatedRoute.snapshot.paramMap.get('id');
-        var result = this.checkAnswerService.checkAnswer(this.currentQuestion.id, this.currentAnswer);
+        context.currentAnswer = e.results[0][0].transcript;
+        document.getElementById('answer').textContent = "Antwoord: " + context.currentAnswer;
+        var id = +context.activatedRoute.snapshot.paramMap.get('id');
+        var result = context.checkAnswerService.checkAnswer(context.currentQuestion.id, context.currentAnswer);
 
         if (result) {
+          context.score = 1;
           document.getElementById('correctheid').textContent = "Antwoord is goed"
         } else {
+          context.score = 0;
           document.getElementById('correctheid').textContent = "Antwoord is fout"
         }
 
@@ -75,9 +77,12 @@ export class AskGeneralQuestionComponent implements OnInit {
     var testId = +this.activatedRoute.snapshot.paramMap.get('tId');
     var test = this.mmseService.getMMSETest(testId);
     var answer = new Answer();
-    answer.questionid = 1;
-    answer.score = 0;
+    answer.questionid = this.currentQuestion.id;
+    answer.score = this.score;
     answer.value = this.currentAnswer;
+    console.log(this.currentAnswer);
+
     test.answers[answer.questionid] = answer;
+    this.router.navigate(["/questionlist/" + testId.toString()]);
   }
 }
