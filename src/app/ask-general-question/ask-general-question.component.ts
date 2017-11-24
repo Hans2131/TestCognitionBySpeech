@@ -17,7 +17,7 @@ export class AskGeneralQuestionComponent implements OnInit {
 
   currentAnswer: string = "unknown";
   currentQuestion: Question;
-
+  
   constructor(private activatedRoute: ActivatedRoute, private mmseService: MmsetestService, private checkAnswerService: CheckAnswerService) { }
 
   ngOnInit() {
@@ -28,18 +28,25 @@ export class AskGeneralQuestionComponent implements OnInit {
         break;
       }
     }
-
+    var context = this;
+    var msg = new SpeechSynthesisUtterance(this.currentQuestion.description);
+    msg.lang = 'nl-NL';
+    msg.rate = 0.8;    
+    window.speechSynthesis.speak(msg);
+    msg.onend = function (e) {
+      context.startDictation();
+    }
   }
 
   startDictation(): void {
 
+    const {webkitSpeechRecognition} = (window as any)
     if (window.hasOwnProperty('webkitSpeechRecognition')) {
 
       var recognition = new webkitSpeechRecognition();
 
       recognition.continuous = false;
       recognition.interimResults = false;
-
       recognition.lang = "nl-NL";
       recognition.start();
 
