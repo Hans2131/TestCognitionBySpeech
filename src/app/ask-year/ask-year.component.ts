@@ -41,7 +41,7 @@ export class AskYearComponent implements OnInit {
 		}
   	}
 
-  	function checkYear(answer: string) {
+    function checkYear(answer: string): boolean {
   		var current_year = new Date().getFullYear().toString();
 
   		if (answer.includes(current_year) == true){
