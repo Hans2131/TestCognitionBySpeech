@@ -6,6 +6,8 @@
         <th>Id</th>
         <th>MMSE nummer</th>
         <th>Vraag</th>
+        <th>Antwoord</th>
+        <th>Score</th>
         <th>Action</th>
       </tr>
     </thead>
@@ -14,8 +16,12 @@
         <td>{{question.id}}</td>
         <td>{{question.mmseid}}</td>
         <td>{{question.description}}</td>
+        <td *ngIf="mmsttest.answers[question.id] != undefined">{{mmsttest.answers[question.id].value}}</td>
+        <td *ngIf="mmsttest.answers[question.id] != undefined">{{mmsttest.answers[question.id].score}}</td>
+        <td *ngIf="mmsttest.answers[question.id] == undefined"></td>
+        <td *ngIf="mmsttest.answers[question.id] == undefined"></td>
         <td>
-          <a class="btn btn-default" (click)="answer(question.id)">Beantwoord vraag</a>         
+          <a class="btn btn-default" (click)="answer(question.id)">Beantwoord vraag</a>
         </td>
       </tr>
     </tbody>
