@@ -13,26 +13,32 @@ import { MmsetestService } from "../mmsetest.service";
 })
 export class QuestionlistComponent implements OnInit {
   questions: Question[];
-  mmsttest : MMSETest;
+  mmsttest: MMSETest;
 
-  constructor(private activatedroute: ActivatedRoute, private router: Router, private mmstService : MmsetestService) { }
+  constructor(private activatedroute: ActivatedRoute, private router: Router, private mmstService: MmsetestService) { }
 
   ngOnInit() {
     this.questions = QUESTIONS;
     var id = +this.activatedroute.snapshot.paramMap.get('id');
-    this.mmsttest = this.mmstService.getMMSETest(id);   
+    this.mmsttest = this.mmstService.getMMSETest(id);
   }
 
   answer(questionid: number) {
-    var currentQuestion : Question;
+    var currentQuestion: Question;
     for (var question of this.questions) {
       if (question.id == questionid) {
-        currentQuestion = question;        
+        currentQuestion = question;
       }
     }
     if (currentQuestion.isGeneral) {
       var tId = +this.activatedroute.snapshot.paramMap.get('id');
-      this.router.navigate(["ask-general-question", {tId: tId, qId: currentQuestion.id }]);
+      this.router.navigate(["ask-general-question", { tId: tId, qId: currentQuestion.id }]);
+    } else {
+      if (currentQuestion.id == 11) {
+          this.router.navigate(["deduction", { tId: tId, qId: currentQuestion.id }]);
+      } else if (currentQuestion.id == 13) {
+        
+      }
     }
   }
 }
