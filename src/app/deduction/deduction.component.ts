@@ -5,6 +5,7 @@ import { Answer } from '../Answer';
 import { MmsetestService } from "../mmsetest.service";
 import { QUESTIONS } from "../QuestionsMock";
 import { Question } from "../Question";
+import { MMSETest } from '../MMSETest';
 
 @Component({
   selector: 'app-deduction',
@@ -34,6 +35,8 @@ export class DeductionComponent implements OnInit {
     window.speechSynthesis.speak(msg);
     msg.onend = function (e) {
       context.startDictation();
+      console.log("start");
+      
     }
   }
 
@@ -52,12 +55,12 @@ export class DeductionComponent implements OnInit {
 
       recognition.onresult = function (e) {
         recognition.stop();
-        this.currentAnswer = e.results[0][0].transcript
+        context.currentAnswer = e.results[0][0].transcript
 
-        this.currentAnswer = checkDeduction(this.currentAnswer);
+        context.currentAnswer = checkDeduction(context.currentAnswer);
 
         function checkDeduction(answer: string): string {
-          var finalAnswer: string;
+          var finalAnswer = "";
           var lastNumber = 100;
           var div = document.createElement('div');
           console.log(answer);
@@ -91,6 +94,8 @@ export class DeductionComponent implements OnInit {
     var testId = +this.activatedRoute.snapshot.paramMap.get('tId');
     var test = this.mmseService.getMMSETest(testId);
     var answer = new Answer();
+    console.log(testId);
+    
     answer.questionid = this.currentQuestion.id;
     answer.score = this.score;
     answer.value = this.currentAnswer;
