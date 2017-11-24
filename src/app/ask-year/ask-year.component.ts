@@ -30,7 +30,7 @@ export class AskYearComponent implements OnInit {
       const {webkitSpeechRecognition} = (window as any)
       var recognition = new webkitSpeechRecognition();
 
-      recognition.continuous = true;
+      recognition.continuous = false;
       recognition.interimResults = false;
 
       recognition.lang = "nl-NL";
@@ -38,7 +38,10 @@ export class AskYearComponent implements OnInit {
 
       recognition.onresult = function (e) {
         recognition.stop();
-        document.getElementById('jaar_span').textContent = e.results[0][0].transcript;
+        var answer = e.results[0][0].transcript;
+        var reg = /\d{4}(?!.*\d{4})/g;
+        var year = reg.exec(answer);
+        document.getElementById('jaar_span').textContent = year[0];
         this.currentAnswer = e.results[0][0].transcript
         var truth = checkYear(this.currentAnswer);        
 

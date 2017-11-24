@@ -26,7 +26,7 @@ import { AskGeneralQuestionComponent } from './ask-general-question/ask-general-
     QuestionlistComponent,
     ReadExcerciseComponent,
     MultipleTestsComponent,
-    DeductionComponent
+    DeductionComponent,
     AskGeneralQuestionComponent
   ],
   imports: [

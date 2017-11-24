@@ -33,6 +33,7 @@ export class AskGeneralQuestionComponent implements OnInit {
 
   startDictation(): void {
 
+    const {webkitSpeechRecognition} = (window as any)
     if (window.hasOwnProperty('webkitSpeechRecognition')) {
 
       var recognition = new webkitSpeechRecognition();
