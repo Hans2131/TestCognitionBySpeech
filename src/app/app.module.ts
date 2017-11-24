@@ -16,6 +16,7 @@ import { DeductionComponent } from './deduction/deduction.component';
 import { CheckAnswerService } from './check-answer.service';
 import { AskGeneralQuestionComponent } from './ask-general-question/ask-general-question.component';
 import { AskSeasonComponent } from './ask-season/ask-season.component';
+import { AskMonthComponent } from './ask-month/ask-month.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { AskSeasonComponent } from './ask-season/ask-season.component';
     MultipleTestsComponent,
     DeductionComponent,
     AskGeneralQuestionComponent,
-    AskSeasonComponent
+    AskSeasonComponent,
+    AskMonthComponent
   ],
   imports: [
     BrowserModule,
