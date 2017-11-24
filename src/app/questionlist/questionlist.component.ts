@@ -20,9 +20,7 @@ export class QuestionlistComponent implements OnInit {
   ngOnInit() {
     this.questions = QUESTIONS;
     var id = +this.activatedroute.snapshot.paramMap.get('id');
-    this.mmsttest = this.mmstService.getMMSETest(id);
-    console.log(this.mmsttest.answers[1]);
-    
+    this.mmsttest = this.mmstService.getMMSETest(id);   
   }
 
   answer(questionid: number) {

@@ -11,13 +11,10 @@ export class MmsetestsComponent implements OnInit {
   mmsetests : MMSETest[];
 
   constructor(private mmseService : MmsetestService) {
-    console.log("Constructor called");
    }
 
   ngOnInit() {
-    this.mmsetests = this.mmseService.getMMSETests();  
-    console.log("Init called");
-    
+    this.mmsetests = this.mmseService.getMMSETests();      
   }
 
 }
