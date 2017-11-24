@@ -10,7 +10,7 @@ export class DeductionComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-  	var msg = new SpeechSynthesisUtterance('Wilt u van de 100 zeven aftrekken en van wat overblijft weer zeven aftrekken en zo doorgaan tot ik stop');
+  	var msg = new SpeechSynthesisUtterance('Wilt u van de 100 het getal zeven aftrekken en van wat overblijft weer zeven aftrekken en zo doorgaan totdat u  bij de 60 komt');
     msg.lang = 'nl-NL';
     msg.rate = 0.8;
     window.speechSynthesis.speak(msg);
