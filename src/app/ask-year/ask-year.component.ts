@@ -31,7 +31,7 @@ export class AskYearComponent implements OnInit {
       const {webkitSpeechRecognition} = (window as any)
       var recognition = new webkitSpeechRecognition();
 
-      recognition.continuous = false;
+      recognition.continuous = true;
       recognition.interimResults = false;
 
       recognition.lang = "nl-NL";

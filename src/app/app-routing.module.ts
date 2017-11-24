@@ -7,6 +7,8 @@ import { MmsetestsComponent }   from './mmsetests/mmsetests.component';
 import { AskYearComponent } from './ask-year/ask-year.component';
 import { QuestionlistComponent } from "./questionlist/questionlist.component";
 import { ReadExcerciseComponent } from "./read-excercise/read-excercise.component";
+import { MultipleTestsComponent } from "./multiple-tests/multiple-tests.component";
+import { DeductionComponent } from "./deduction/deduction.component";
 
 const routes: Routes = [
   { path: '', redirectTo: '/mmsetests', pathMatch: 'full' },
@@ -16,6 +18,8 @@ const routes: Routes = [
   { path: 'mmsetests', component: MmsetestsComponent },
   { path: 'questionlist/:id', component: QuestionlistComponent },
   { path: 'read-excercise', component: ReadExcerciseComponent },
+  { path: 'multiple-tests', component: MultipleTestsComponent },
+  { path: 'deduction', component: DeductionComponent },
 ];
 
 @NgModule({
