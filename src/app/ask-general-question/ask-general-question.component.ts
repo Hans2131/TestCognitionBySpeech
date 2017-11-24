@@ -17,7 +17,7 @@ export class AskGeneralQuestionComponent implements OnInit {
 
   currentAnswer: string = "unknown";
   currentQuestion: Question;
-  score : number;
+  score: number;
 
   constructor(private activatedRoute: ActivatedRoute, private router: Router, private mmseService: MmsetestService, private checkAnswerService: CheckAnswerService) { }
 
@@ -53,18 +53,21 @@ export class AskGeneralQuestionComponent implements OnInit {
 
       recognition.onresult = function (e) {
         recognition.stop();
+
         context.currentAnswer = e.results[0][0].transcript;
-        document.getElementById('answer').textContent = "Antwoord: " + context.currentAnswer;
+        var reg = /\d{4}(?!.*\d{4})/g;
+        var year = reg.exec(context.currentAnswer);
+        document.getElementById('answer').textContent = "Antwoord: " + year[0];
+
         var id = +context.activatedRoute.snapshot.paramMap.get('id');
         var result = context.checkAnswerService.checkAnswer(context.currentQuestion.id, context.currentAnswer);
 
         if (result) {
           context.score = 1;
-          document.getElementById('correctheid').textContent = "Antwoord is goed"
         } else {
           context.score = 0;
-          document.getElementById('correctheid').textContent = "Antwoord is fout"
         }
+        document.getElementById('correctheid').textContent = "Score: " + context.score.toString();
 
         recognition.onerror = function (e) {
           recognition.stop();
