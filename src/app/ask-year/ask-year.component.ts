@@ -12,7 +12,7 @@ import { MmsetestService } from "../mmsetest.service";
 })
 export class AskYearComponent implements OnInit {
 
-	currentAnswer: string = "2017"
+	currentAnswer: string = "2017";
 	
 	constructor(private activatedRoute: ActivatedRoute, private mmseService: MmsetestService) { }
 

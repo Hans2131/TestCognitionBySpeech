@@ -26,9 +26,15 @@ export class QuestionlistComponent implements OnInit {
   }
 
   answer(questionid: number) {
-    if (questionid == 1) {
-      var id = +this.activatedroute.snapshot.paramMap.get('id');
-      this.router.navigate(["/ask-year/" + id]);
+    var currentQuestion : Question;
+    for (var question of this.questions) {
+      if (question.id == questionid) {
+        currentQuestion = question;        
+      }
+    }
+    if (currentQuestion.isGeneral) {
+      var tId = +this.activatedroute.snapshot.paramMap.get('id');
+      this.router.navigate(["ask-general-question", {tId: tId, qId: currentQuestion.id }]);
     }
   }
 }

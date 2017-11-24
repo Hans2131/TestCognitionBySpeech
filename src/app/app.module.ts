@@ -10,6 +10,8 @@ import { MmsetestsComponent } from './mmsetests/mmsetests.component';
 import { MmsetestService } from './mmsetest.service';
 import { AskYearComponent } from './ask-year/ask-year.component';
 import { QuestionlistComponent } from './questionlist/questionlist.component';
+import { CheckAnswerService } from './check-answer.service';
+import { AskGeneralQuestionComponent } from './ask-general-question/ask-general-question.component';
 
 @NgModule({
   declarations: [
@@ -18,13 +20,14 @@ import { QuestionlistComponent } from './questionlist/questionlist.component';
     AskNameComponent,
     MmsetestsComponent,
     AskYearComponent,
-    QuestionlistComponent
+    QuestionlistComponent,
+    AskGeneralQuestionComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [MmsetestService],
+  providers: [MmsetestService, CheckAnswerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
