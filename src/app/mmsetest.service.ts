@@ -23,6 +23,8 @@ export class MmsetestService {
 
   updateMMSETest(mmsetest: MMSETest): void {
     let index = MMSETESTS.indexOf(mmsetest);
-    MMSETest[index] = mmsetest;
+    console.log(index);
+    
+    //MMSETest[index] = mmsetest;
   }
 }

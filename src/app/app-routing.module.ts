@@ -8,7 +8,7 @@ import { MmsetestsComponent }   from './mmsetests/mmsetests.component';
 const routes: Routes = [
   { path: '', redirectTo: '/mmsetests', pathMatch: 'full' },
   { path: 'test-start/:id', component: TestStartComponent },
-  { path: 'ask-name', component: AskNameComponent },
+  { path: 'ask-name/:id', component: AskNameComponent },
   { path: 'mmsetests', component: MmsetestsComponent },
 ];
 

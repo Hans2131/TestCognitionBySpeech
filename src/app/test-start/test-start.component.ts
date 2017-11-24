@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { MMSETest } from '../MMSETest';
 import { MmsetestService } from '../mmsetest.service';
@@ -13,10 +13,10 @@ export class TestStartComponent implements OnInit {
   buttonname: string;
   currenttest: MMSETest;
 
-  constructor(private route: ActivatedRoute, private mmseService: MmsetestService) { }
+  constructor(private activatedroute: ActivatedRoute, private router: Router, private mmseService: MmsetestService) { }
 
   ngOnInit() {
-    let id = +this.route.snapshot.paramMap.get('id');
+    let id = +this.activatedroute.snapshot.paramMap.get('id');
 
     this.currenttest = this.mmseService.getMMSETest(id);
 
@@ -24,9 +24,9 @@ export class TestStartComponent implements OnInit {
   }
 
   startTest() {
-    this.currenttest.status == "Test Started";
+    this.currenttest.status = "Test Started";
     this.mmseService.updateMMSETest(this.currenttest);
-    
+    this.router.navigate(['/ask-name/' + this.currenttest.id.toString()]);
   }
 
 }
