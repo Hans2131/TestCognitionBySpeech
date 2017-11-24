@@ -8,13 +8,15 @@ import { AppRoutingModule } from './/app-routing.module';
 import { AskNameComponent } from './ask-name/ask-name.component';
 import { MmsetestsComponent } from './mmsetests/mmsetests.component';
 import { MmsetestService } from './mmsetest.service';
+import { AskYearComponent } from './ask-year/ask-year.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TestStartComponent,
     AskNameComponent,
-    MmsetestsComponent
+    MmsetestsComponent,
+    AskYearComponent
   ],
   imports: [
     BrowserModule,
