@@ -17,12 +17,18 @@ export class AskYearComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute, private mmseService: MmsetestService) { }
 
   ngOnInit() {
+    var msg = new SpeechSynthesisUtterance('Welk jaar is het?');
+    msg.lang = 'nl-NL';
+    msg.rate = 0.8;
+    window.speechSynthesis.speak(msg);
+    this.startDictation();
   }
 
   startDictation(): void {
 
     if (window.hasOwnProperty('webkitSpeechRecognition')) {
 
+      const {webkitSpeechRecognition} = (window as any)
       var recognition = new webkitSpeechRecognition();
 
       recognition.continuous = false;
