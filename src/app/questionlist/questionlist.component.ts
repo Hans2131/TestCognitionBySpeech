@@ -37,7 +37,7 @@ export class QuestionlistComponent implements OnInit {
       if (currentQuestion.id == 11) {
         this.router.navigate(["deduction", { tId: tId, qId: currentQuestion.id }]);
       } else if (currentQuestion.id == 13) {
-
+        this.router.navigate(["read-excercise", { tId: tId, qId: currentQuestion.id }]);
       }
     }
   }
