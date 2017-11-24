@@ -1,3 +1,9 @@
-.center{
-    
+#wrapper{
+    text-align: center;
+}
+
+.text{
+    text-align: center;
+    font-weight: bold;
+    font-size: 100px;
 }

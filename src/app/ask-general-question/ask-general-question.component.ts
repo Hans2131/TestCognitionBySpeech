@@ -52,7 +52,10 @@ export class AskGeneralQuestionComponent implements OnInit {
 
       recognition.onresult = function (e) {
         recognition.stop();
-        document.getElementById('answer').textContent = e.results[0][0].transcript;
+        var answer = e.results[0][0].transcript;
+        var reg = /\d{4}(?!.*\d{4})/g;
+        var year = reg.exec(answer);
+        document.getElementById('answer').textContent = year[0];
         this.currentAnswer = e.results[0][0].transcript
 
         var id = +this.activatedRoute.snapshot.paramMap.get('id');

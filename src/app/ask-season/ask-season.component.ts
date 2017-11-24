@@ -70,7 +70,7 @@ export class AskSeasonComponent implements OnInit {
 
 			
 			if (include(current_season, seasons_array[seasons.indexOf(max)]) == true) {return true;}
-       
+		}
 
         function get_season() {
 			var current_day = new Date();
@@ -113,6 +113,4 @@ export class AskSeasonComponent implements OnInit {
       }
     }
   }
-
-}
 }
