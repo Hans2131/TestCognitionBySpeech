@@ -10,5 +10,6 @@ export const QUESTIONS: Question[] = [
     { id: 7, mmseid: "2b", isGeneral: true, description: "In welke plaats zijn we nu?" },
     { id: 8, mmseid: "2c", isGeneral: true, description: "In welk ziekenhuis (instelling) zijn we nu?" },
     { id: 9, mmseid: "2d", isGeneral: true, description: "Wat is de naam van deze afdeling?" },
-    { id: 10, mmseid: "2e", isGeneral: true, description: "Op welke verdieping zijn we nu?" }
+    { id: 10, mmseid: "2e", isGeneral: true, description: "Op welke verdieping zijn we nu?" },
+    { id: 11, mmseid: "7", isGeneral: true, description: "Wilt u voor mij de volgende zin herhalen: Nu eens dit en dan weer dat." }    
 ];
