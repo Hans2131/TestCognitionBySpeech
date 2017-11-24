@@ -25,6 +25,6 @@ export class MmsetestService {
     let index = MMSETESTS.indexOf(mmsetest);
     console.log(index);
     
-    //MMSETest[index] = mmsetest;
+    MMSETest[index] = mmsetest;
   }
 }

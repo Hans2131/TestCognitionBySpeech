@@ -9,6 +9,7 @@ import { AskNameComponent } from './ask-name/ask-name.component';
 import { MmsetestsComponent } from './mmsetests/mmsetests.component';
 import { MmsetestService } from './mmsetest.service';
 import { AskYearComponent } from './ask-year/ask-year.component';
+import { QuestionlistComponent } from './questionlist/questionlist.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { AskYearComponent } from './ask-year/ask-year.component';
     TestStartComponent,
     AskNameComponent,
     MmsetestsComponent,
-    AskYearComponent
+    AskYearComponent,
+    QuestionlistComponent
   ],
   imports: [
     BrowserModule,

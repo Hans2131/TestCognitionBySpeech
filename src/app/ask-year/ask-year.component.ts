@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
+import { MMSETest } from '../MMSETest';
+import { Answer } from '../Answer';
+import { MmsetestService } from "../mmsetest.service";
 
 @Component({
   selector: 'app-ask-year',
@@ -7,47 +12,61 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AskYearComponent implements OnInit {
 
-  constructor() { }
+  currentAnswer: string;
+  
+  constructor(private activatedRoute: ActivatedRoute, private mmseService: MmsetestService) { }
 
   ngOnInit() {
   }
 
   startDictation(): void {
 
-		if (window.hasOwnProperty('webkitSpeechRecognition')) {
+    if (window.hasOwnProperty('webkitSpeechRecognition')) {
 
-			var recognition = new webkitSpeechRecognition();
+      var recognition = new webkitSpeechRecognition();
 
-      	recognition.continuous = false;
-      	recognition.interimResults = false;
+      recognition.continuous = false;
+      recognition.interimResults = false;
 
-      	recognition.lang = "nl-NL";
-      	recognition.start();
+      recognition.lang = "nl-NL";
+      recognition.start();
 
-   			recognition.onresult = function(e) {
-       		recognition.stop();
-				  document.getElementById('jaar_span').textContent=e.results[0][0].transcript;
-				  var truth = checkYear(e.results[0][0].transcript);
-				  if (truth) {
-				  	document.getElementById('correctheid').textContent="Antwoord is goed"
-				  } else {
-				  	document.getElementById('correctheid').textContent="Antwoord is fout"
-				  }
-   			};
+      recognition.onresult = function (e) {
+        recognition.stop();
+        document.getElementById('jaar_span').textContent = e.results[0][0].transcript;
+        this.currentAnswer = e.results[0][0].transcript
+        var truth = checkYear(this.currentAnswer);        
 
-   			recognition.onerror = function(e) {
-       		recognition.stop();
-    		}
-		}
-  	}
+        if (truth) {
+          document.getElementById('correctheid').textContent = "Antwoord is goed"
+        } else {
+          document.getElementById('correctheid').textContent = "Antwoord is fout"
+        }
 
-    function checkYear(answer: string): boolean {
-  		var current_year = new Date().getFullYear().toString();
+        function checkYear(answer: string): boolean {
+          var current_year = new Date().getFullYear().toString();
 
-  		if (answer.includes(current_year) == true){
-  			return true;
-  		} else {
-  			return false;
-  		}
-  	}
+          if (answer.includes(current_year) == true) {
+            return true;
+          } else {
+            return false;
+          }
+        }
+
+        recognition.onerror = function (e) {
+          recognition.stop();
+        }
+      }
+    }
+  }
+
+  finalizeAnswer(): void {
+    var id = +this.activatedRoute.snapshot.paramMap.get('id');
+    var test = this.mmseService.getMMSETest(id);
+    var answer = new Answer();
+    answer.questionid = 1;
+    answer.score = 0;
+    answer.value = this.currentAnswer;
+    test.answers[answer.questionid] = answer;
+  }
 }

@@ -25,7 +25,7 @@ export class TestStartComponent implements OnInit {
 
   startTest() {
     this.currenttest.status = "Test Started";
-    this.mmseService.updateMMSETest(this.currenttest);
+    //this.mmseService.updateMMSETest(this.currenttest);
     this.router.navigate(['/ask-name/' + this.currenttest.id.toString()]);
   }
 
