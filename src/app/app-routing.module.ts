@@ -6,6 +6,7 @@ import { AskNameComponent }   from './ask-name/ask-name.component';
 import { MmsetestsComponent }   from './mmsetests/mmsetests.component';
 import { AskYearComponent } from './ask-year/ask-year.component';
 import { QuestionlistComponent } from "./questionlist/questionlist.component";
+import { ReadExcerciseComponent } from "./read-excercise/read-excercise.component";
 
 const routes: Routes = [
   { path: '', redirectTo: '/mmsetests', pathMatch: 'full' },
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'ask-year/:id', component: AskYearComponent },
   { path: 'mmsetests', component: MmsetestsComponent },
   { path: 'questionlist/:id', component: QuestionlistComponent },
+  { path: 'read-excercise', component: ReadExcerciseComponent },
 ];
 
 @NgModule({

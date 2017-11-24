@@ -1,0 +1,14 @@
+.text{
+    text-align: center;
+    font-weight: bold;
+    font-size: 100px;
+}
+
+.btn{
+	background-color: #FF0000;
+	padding: 100px 100px;
+}
+
+#wrapper{
+    text-align: center;
+}

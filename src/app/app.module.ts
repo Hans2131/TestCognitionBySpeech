@@ -10,6 +10,7 @@ import { MmsetestsComponent } from './mmsetests/mmsetests.component';
 import { MmsetestService } from './mmsetest.service';
 import { AskYearComponent } from './ask-year/ask-year.component';
 import { QuestionlistComponent } from './questionlist/questionlist.component';
+import { ReadExcerciseComponent } from './read-excercise/read-excercise.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { QuestionlistComponent } from './questionlist/questionlist.component';
     AskNameComponent,
     MmsetestsComponent,
     AskYearComponent,
-    QuestionlistComponent
+    QuestionlistComponent,
+    ReadExcerciseComponent
   ],
   imports: [
     BrowserModule,
